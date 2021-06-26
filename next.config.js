@@ -9,7 +9,11 @@ module.exports = {
       test: /\.svg$/,
       use: ["@svgr/webpack"],
     });
-
+    if (!isServer) {
+      config.node = {
+        fs: "empty",
+      };
+    }
     return config;
   },
 };
