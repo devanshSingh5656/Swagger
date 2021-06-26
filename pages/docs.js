@@ -32,7 +32,15 @@ function createSwaggerSpec({
       ],
     },
 
-    apis: [`${apiDirectory}/about.js`], // files containing annotations as above
+    apis: [
+      `${apiDirectory}/about.js`,
+      `${directy}/about.js`,
+      `/api/about.js`,
+      `./api/about.js`,
+      `./pages/api/about.js`,
+
+      `/pages/api/about.js`,
+    ], // files containing annotations as above
   };
 
   return swaggerJSDoc(options);
