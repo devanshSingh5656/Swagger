@@ -3,48 +3,48 @@ import swaggerJSDoc from "swagger-jsdoc";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import { join } from "path";
-
+import { createSwaggerSpec } from "next-swagger-doc";
 // import { join } from '';
-function createSwaggerSpec({
-  openApiVersion = "3.0.0",
-  title,
-  version,
-  apiFolder = "pages/api",
-}) {
-  const apiDirectory = join(process.cwd(), apiFolder);
-  const directy = join(__dirname, apiFolder);
-  const options = {
-    definition: {
-      openapi: openApiVersion,
-      info: {
-        title,
-        version,
-      },
-      servers: [
-        {
-          url: "http://localhost:3000",
-          description: "Development server",
-        },
-        {
-          url: "https://go-regi.com",
-          description: "Production server",
-        },
-      ],
-    },
+// function createSwaggerSpec({
+//   openApiVersion = "3.0.0",
+//   title,
+//   version,
+//   apiFolder = "pages/api",
+// }) {
+//   const apiDirectory = join(process.cwd(), apiFolder);
+//   const directy = join(__dirname, apiFolder);
+//   const options = {
+//     definition: {
+//       openapi: openApiVersion,
+//       info: {
+//         title,
+//         version,
+//       },
+//       servers: [
+//         {
+//           url: "http://localhost:3000",
+//           description: "Development server",
+//         },
+//         {
+//           url: "https://go-regi.com",
+//           description: "Production server",
+//         },
+//       ],
+//     },
 
-    apis: [
-      `${apiDirectory}/about.js`,
-      `${directy}/about.js`,
-      `/api/about.js`,
-      `./api/about.js`,
-      `./pages/api/about.js`,
+//     apis: [
+//       `${apiDirectory}/about.js`,
+//       `${directy}/about.js`,
+//       `/api/about.js`,
+//       `./api/about.js`,
+//       `./pages/api/about.js`,
 
-      `/pages/api/about.js`,
-    ], // files containing annotations as above
-  };
+//       `/pages/api/about.js`,
+//     ], // files containing annotations as above
+//   };
 
-  return swaggerJSDoc(options);
-}
+//   return swaggerJSDoc(options);
+// }
 
 const Doc = ({ spec, classes }) => {
   return (
